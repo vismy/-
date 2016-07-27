@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "SingleList.h"
+#import "SingleListItem.h"
 
 @interface ViewController ()
 
@@ -16,7 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    SingleList *list = [SingleList createSingleListWithHeader];
+    for (int i=0; i<10; i++) {
+        SingleListItem *item = [[SingleListItem alloc]init];
+        item.data = [NSString stringWithFormat:@"%d",i];
+        
+        [list addItem:item];
+        
+    }
+    [list logList];
+    
 }
 
 - (void)didReceiveMemoryWarning {
